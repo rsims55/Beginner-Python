@@ -1,0 +1,236 @@
+---
+title: "Intro_python"
+format: html
+editor: visual
+jupyter: python3
+---
+
+# Setting up Python
+
+## Beginning Python in R Studio
+
+You have to install *reticulate* or call it to make it work within R studio.
+
+```{r setup, include=FALSE, echo=TRU}
+library(reticulate)
+```
+
+To enable the console to run Python instead of R run the following code:
+
+```{r}
+reticulate::repl_python()
+```
+
+## Import predefined functions/libraries
+
+These libraries or functions are *numpy* and *pandas*, used for data analysis.
+
+```{python}
+import numpy as np
+import pandas as pd
+import scipy.stats
+```
+
+## Basic Python
+
+These are some basic codes in Python and things to know.
+
+The **print function** is used a lot like R to print output of a code or results.
+
+```{python}
+print("Hello World")
+```
+
+Can also use the **length function** to find the length of a string.
+
+```{python}
+print(len("Randi Joy Sims"))
+```
+
+Same applies with *integers* as with *strings.*
+
+```{python}
+5+10
+a = 5
+b = 10
+print(a+b)
+```
+
+## Multi-line Code
+
+Python uses tabs (4 spaces) to indicate multiple lines in one function
+
+**If statements** generally utilize multiple lines. Notice the semicolon connecting the **if statement** with the **print statement**.
+
+```{python}
+num=5
+
+if(num==5):
+  print("Randi's favorite number")
+if(num>5):
+  print("Randi thinks this number is shit")
+```
+
+**Functions** are operators used to complete certain actions. Parameters of a function are defined using the *def* keyword.
+
+```{python}
+def my_print_function():
+  print("This")
+  print("is")
+  print("A")
+  print("function")
+  
+my_print_function()
+```
+
+## Importing a File
+
+To work with a data file, it first should be imported. This is where the pandas library comes in. This is an example dataset titled "Diabetes".
+
+```{python}
+import pandas as pd
+sampledf = pd.read_csv(r'C:/Users/randi/OneDrive - Clemson University/Desktop/School Stuff/Coding Stuff/Coding Stuff with Tim/Beginner Python/sample.csv')
+print(sampledf)
+```
+
+If there are only certain columns of interest, you can also subset these columns during import.
+
+```{python}
+import pandas as pd
+
+sampledf=pd.read_csv(r'C:/Users/randi/OneDrive - Clemson University/Desktop/School Stuff/Coding Stuff/Coding Stuff with Tim/Beginner Python/sample.csv')
+sample_sub=pd.DataFrame(sampledf, columns=['Salary','Country'])
+print(sample_sub)
+```
+
+# Statistics in Python
+
+The statistics examples below are using the "sampledf" looking at names, salary, and country.
+
+## Basic descriptive statistics
+
+Statistic functions work differently in Python versus R. Because it is still an object-based programming language, you should still define the object using *=*.
+
+However, calling the dataframe and column is done by *df\['columnname'\]*.
+
+To run the statistic function, you define the object, call the data frame\[and column if needed\], then use *.function()*.
+
+You then print the result using *print(object)*.
+
+To use simple descriptive statistics you can use the following functions:
+
+```{python}
+samplemean = sampledf['Salary'].mean()
+print(samplemean)
+
+samplesum = sampledf['Salary'].sum()
+print(samplesum)
+
+samplemax = sampledf['Salary'].max()
+print(samplemax)
+
+samplemin = sampledf['Salary'].min()
+print(samplemin)
+
+samplecount = sampledf['Salary'].count()
+print(samplecount)
+
+samplemedian = sampledf['Salary'].median()
+print(samplemedian)
+
+samplestd = sampledf['Salary'].std()
+print(samplestd)
+
+samplevar = sampledf['Salary'].var()
+print(samplevar)
+```
+
+To make the code look nicer, you can add a string to the printed objects.
+
+```{python}
+samplemean = sampledf['Salary'].mean()
+print('Mean salary:' + str(samplemean))
+```
+
+Additionally, you can use the .describe() function to give a quick view of the descriptive statistics for the dataset. To view the data frame you can use the describe method.
+
+```{python}
+sampledf.describe()
+```
+
+You can also use the **group.by()** function to group numbers in a dataset by a function.
+
+```{python}
+groupby_sum = sampledf.groupby(['Country']).sum()
+print(groupby_sum)
+
+groupby_count = sampledf.groupby(['Country']).count()
+print(groupby_count)
+
+groupby_mean = sampledf.groupby(['Country']).mean()
+print(groupby_mean)
+```
+
+## Inferential and predictive statistics
+
+For more advanced statistics, we will use the brain_size dataset. Also a note on how to import datasets with blanks or na values (na_values=(some indicator))
+
+```{python}
+brain_size = pd.read_csv(r'C:/Users/randi/OneDrive - Clemson University/Desktop/School Stuff/Coding Stuff/Coding Stuff with Tim/Beginner Python/brain_size.csv', sep=';', na_values=".")
+```
+
+## Information about the dataframe
+
+.shape will give information on the "shape of the dataframe". The first number is the number of rows, the second is the number of columns. So (40, 8) means 40 rows and 8 columns of data.
+
+```{python}
+brain_size.shape
+```
+
+.columns will give information on the columns in the dataframe
+
+```{python}
+brain_size.columns
+```
+
+Columns can be addressed by a square bracket and apostrophe. We can use this to get information on the rows contained in the column. The following code will give a list of all genders, then will take a mean of all the female VIQs.
+
+```{python}
+print(brain_size['Gender'])
+
+brain_size[brain_size['Gender']=='Female']['VIQ'].mean()
+```
+
+The groupby function can also be used to give more information across a the dataframe columns.
+
+This example groups brain size by gender and then gives means for each gender.
+
+```{python}
+groupby_gender = brain_size.groupby('Gender')
+for gender, value in groupby_gender['VIQ']:
+  print((gender, value.mean()))
+groupby_gender.mean()
+```
+
+# Plotting Data
+
+First you have to import the plot tools from pandas.
+
+```{python}
+import matplotlib.pyplot as plt
+import pandas.plotting
+from pandas.plotting import scatter_matrix
+```
+
+## Scatter Matrices
+
+Scatter matrices can be constructed by specifying the dataset and columns. Make sure to end the command with plt.show(). Especially in R Studio.
+
+```{python}
+scatter_matrix(brain_size[['Weight', 'Height', 'MRI_Count']])
+plt.show()
+```
+
+# Questions
+
+1.  The hotkey for inserting a coding chunk is Ctrl+Alt+I, but it only adds in an "r" chunk. How can I change this to Python, or to the last chunk written?
