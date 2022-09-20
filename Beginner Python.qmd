@@ -231,6 +231,65 @@ scatter_matrix(brain_size[['Weight', 'Height', 'MRI_Count']])
 plt.show()
 ```
 
+# Hypothesis Testing
+
+First, import the scipy.stats submodule of scipy.
+
+```{python}
+from scipy import stats
+```
+
+## Student's t-test
+
+### One Sample t-test
+
+For one-sample student's t-test, python will return the p-value and t-stat. run the sample column with stats.ttest_1samp for 1 sample. Set the mean to 0 for a normal distribution.
+
+```{python}
+stats.ttest_1samp(brain_size['VIQ'], 0)
+```
+
+### Two Sample t-test
+
+For two-sample student's t-test, you can create two objects to compare means between (or you can use two columns. Use stats.ttest_ind to run the two-sample t-test.
+
+```{python}
+female_viq = brain_size[brain_size['Gender']=='Female']['VIQ']
+male_viq = brain_size[brain_size['Gender']=='Male']['VIQ']
+stats.ttest_ind(female_viq, male_viq)
+```
+
+## Paired t-test
+
+For paired tests, you can use the stats.ttest_rel function. 
+
+```{python}
+stats.ttest_rel(brain_size['FSIQ'], brain_size['PIQ'])
+```
+
+It is also the same as a 1 sample test when yu take the difference between columns.
+
+```{python}
+stats.ttest_1samp(brain_size['FSIQ'] - brain_size['PIQ'], 0)
+```
+## Non-normal distributions
+
+### Wilcoxon signed-rank tests
+
+Wilcoxon signed-rank tests for non-normal distributions of paired data can be ran using the stats.wilcoxon function.
+
+```{python}
+stats.wilcoxon(brain_size['FSIQ'], brain_size['PIQ'])
+```
+
+### Mann-Whitney U tests 
+
+Mann-Whitney U tests can be used for non-normal distributions of unpaired data using the scipy.stats.mannwhitneyu() function.
+
+```{python}
+scipy.stats.mannwhitneyu(brain_size['FSIQ'], brain_size['PIQ'])
+```
+
 # Questions
 
 1.  The hotkey for inserting a coding chunk is Ctrl+Alt+I, but it only adds in an "r" chunk. How can I change this to Python, or to the last chunk written?

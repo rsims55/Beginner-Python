@@ -96,6 +96,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="Beginner Python_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="Beginner Python_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="Beginner Python_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -122,17 +125,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<section id="setting-up-python" class="level1">
+<h1>Setting up Python</h1>
 <section id="beginning-python-in-r-studio" class="level2">
 <h2 class="anchored" data-anchor-id="beginning-python-in-r-studio">Beginning Python in R Studio</h2>
 <p>You have to install <em>reticulate</em> or call it to make it work within R studio.</p>
 <p><code>{r setup, include=FALSE, echo=TRU} library(reticulate)</code></p>
+<p>To enable the console to run Python instead of R run the following code:</p>
+<pre class="{r}"><code>reticulate::repl_python()</code></pre>
 </section>
 <section id="import-predefined-functionslibraries" class="level2">
 <h2 class="anchored" data-anchor-id="import-predefined-functionslibraries">Import predefined functions/libraries</h2>
 <p>These libraries or functions are <em>numpy</em> and <em>pandas</em>, used for data analysis.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="basic-python" class="level2">
@@ -140,24 +148,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>These are some basic codes in Python and things to know.</p>
 <p>The <strong>print function</strong> is used a lot like R to print output of a code or results.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello World</code></pre>
 </div>
 </div>
 <p>Can also use the <strong>length function</strong> to find the length of a string.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(<span class="st">"Randi Joy Sims"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(<span class="st">"Randi Joy Sims"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>14</code></pre>
 </div>
 </div>
 <p>Same applies with <em>integers</em> as with <em>strings.</em></p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="op">+</span><span class="dv">10</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">+</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="op">+</span><span class="dv">10</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">+</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>15</code></pre>
 </div>
@@ -167,26 +175,453 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="multi-line-code">Multi-line Code</h2>
 <p>Python uses tabs (4 spaces) to indicate multiple lines in one function</p>
 <p><strong>If statements</strong> generally utilize multiple lines. Notice the semicolon connecting the <strong>if statement</strong> with the <strong>print statement</strong>.</p>
-<pre class="{python}"><code>num=5
-
-if(num==5):
-  print("Randi's favorite number")
-if(num&gt;5):
-  print("Randi thinks this number is shit")</code></pre>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>num<span class="op">=</span><span class="dv">5</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(num<span class="op">==</span><span class="dv">5</span>):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Randi's favorite number"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(num<span class="op">&gt;</span><span class="dv">5</span>):</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Randi thinks this number is shit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Randi's favorite number</code></pre>
+</div>
+</div>
 <p><strong>Functions</strong> are operators used to complete certain actions. Parameters of a function are defined using the <em>def</em> keyword.</p>
-<pre class="{python}"><code>def my_print_function():
-  print("This")
-  print("is")
-  print("A")
-  print("function")
-  
-my_print_function()</code></pre>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_print_function():</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"This"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"is"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"A"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"function"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>my_print_function()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This
+is
+A
+function</code></pre>
+</div>
+</div>
 </section>
 <section id="importing-a-file" class="level2">
 <h2 class="anchored" data-anchor-id="importing-a-file">Importing a File</h2>
-<p>To work with a data file, it first should be imported. This is where the pandas function comes in. This is an example dataset titled “Diabetes”.</p>
-<pre class="{python}"><code>import pandas as pd
-diabetes = pd.read_csv("C:/Users/randi/OneDrive - Clemson University/Desktop/School Stuff/Coding Stuff/Coding Stuff with Tim/Beginner Python/diabetes.csv")</code></pre>
+<p>To work with a data file, it first should be imported. This is where the pandas library comes in. This is an example dataset titled “Diabetes”.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sampledf <span class="op">=</span> pd.read_csv(<span class="vs">r'C:/Users/randi/OneDrive - Clemson University/Desktop/School Stuff/Coding Stuff/Coding Stuff with Tim/Beginner Python/sample.csv'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sampledf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Name  Salary Country
+0        Dan   40000     USA
+1  Elizabeth   32000  Brazil
+2        Jon   45000   Italy
+3      Maria   54000     USA
+4       Mark   72000     USA
+5       Bill   62000  Brazil
+6       Jess   92000   Italy
+7      Julia   55000     USA
+8       Jeff   35000   Italy
+9        Ben   48000  Brazil</code></pre>
+</div>
+</div>
+<p>If there are only certain columns of interest, you can also subset these columns during import.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sampledf<span class="op">=</span>pd.read_csv(<span class="vs">r'C:/Users/randi/OneDrive - Clemson University/Desktop/School Stuff/Coding Stuff/Coding Stuff with Tim/Beginner Python/sample.csv'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>sample_sub<span class="op">=</span>pd.DataFrame(sampledf, columns<span class="op">=</span>[<span class="st">'Salary'</span>,<span class="st">'Country'</span>])</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sample_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Salary Country
+0   40000     USA
+1   32000  Brazil
+2   45000   Italy
+3   54000     USA
+4   72000     USA
+5   62000  Brazil
+6   92000   Italy
+7   55000     USA
+8   35000   Italy
+9   48000  Brazil</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="statistics-in-python" class="level1">
+<h1>Statistics in Python</h1>
+<p>The statistics examples below are using the “sampledf” looking at names, salary, and country.</p>
+<section id="basic-descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="basic-descriptive-statistics">Basic descriptive statistics</h2>
+<p>Statistic functions work differently in Python versus R. Because it is still an object-based programming language, you should still define the object using <em>=</em>.</p>
+<p>However, calling the dataframe and column is done by <em>df[‘columnname’]</em>.</p>
+<p>To run the statistic function, you define the object, call the data frame[and column if needed], then use <em>.function()</em>.</p>
+<p>You then print the result using <em>print(object)</em>.</p>
+<p>To use simple descriptive statistics you can use the following functions:</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>samplemean <span class="op">=</span> sampledf[<span class="st">'Salary'</span>].mean()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(samplemean)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>samplesum <span class="op">=</span> sampledf[<span class="st">'Salary'</span>].<span class="bu">sum</span>()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(samplesum)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>samplemax <span class="op">=</span> sampledf[<span class="st">'Salary'</span>].<span class="bu">max</span>()</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(samplemax)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>samplemin <span class="op">=</span> sampledf[<span class="st">'Salary'</span>].<span class="bu">min</span>()</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(samplemin)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>samplecount <span class="op">=</span> sampledf[<span class="st">'Salary'</span>].count()</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(samplecount)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>samplemedian <span class="op">=</span> sampledf[<span class="st">'Salary'</span>].median()</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(samplemedian)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>samplestd <span class="op">=</span> sampledf[<span class="st">'Salary'</span>].std()</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(samplestd)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>samplevar <span class="op">=</span> sampledf[<span class="st">'Salary'</span>].var()</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(samplevar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>53500.0
+535000
+92000
+32000
+10
+51000.0
+18222.391598128816
+332055555.5555556</code></pre>
+</div>
+</div>
+<p>To make the code look nicer, you can add a string to the printed objects.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>samplemean <span class="op">=</span> sampledf[<span class="st">'Salary'</span>].mean()</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean salary:'</span> <span class="op">+</span> <span class="bu">str</span>(samplemean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean salary:53500.0</code></pre>
+</div>
+</div>
+<p>Additionally, you can use the .describe() function to give a quick view of the descriptive statistics for the dataset. To view the data frame you can use the describe method.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sampledf.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>10.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>53500.000000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>18222.391598</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>32000.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>41250.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>51000.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>60250.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>92000.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>You can also use the <strong>group.by()</strong> function to group numbers in a dataset by a function.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>groupby_sum <span class="op">=</span> sampledf.groupby([<span class="st">'Country'</span>]).<span class="bu">sum</span>()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(groupby_sum)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>groupby_count <span class="op">=</span> sampledf.groupby([<span class="st">'Country'</span>]).count()</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(groupby_count)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>groupby_mean <span class="op">=</span> sampledf.groupby([<span class="st">'Country'</span>]).mean()</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(groupby_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Salary
+Country        
+Brazil   142000
+Italy    172000
+USA      221000
+         Name  Salary
+Country              
+Brazil      3       3
+Italy       3       3
+USA         4       4
+               Salary
+Country              
+Brazil   47333.333333
+Italy    57333.333333
+USA      55250.000000</code></pre>
+</div>
+</div>
+</section>
+<section id="inferential-and-predictive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="inferential-and-predictive-statistics">Inferential and predictive statistics</h2>
+<p>For more advanced statistics, we will use the brain_size dataset. Also a note on how to import datasets with blanks or na values (na_values=(some indicator))</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>brain_size <span class="op">=</span> pd.read_csv(<span class="vs">r'C:/Users/randi/OneDrive - Clemson University/Desktop/School Stuff/Coding Stuff/Coding Stuff with Tim/Beginner Python/brain_size.csv'</span>, sep<span class="op">=</span><span class="st">';'</span>, na_values<span class="op">=</span><span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="information-about-the-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="information-about-the-dataframe">Information about the dataframe</h2>
+<p>.shape will give information on the “shape of the dataframe”. The first number is the number of rows, the second is the number of columns. So (40, 8) means 40 rows and 8 columns of data.</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>brain_size.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>(40, 8)</code></pre>
+</div>
+</div>
+<p>.columns will give information on the columns in the dataframe</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>brain_size.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>Index(['Unnamed: 0', 'Gender', 'FSIQ', 'VIQ', 'PIQ', 'Weight', 'Height',
+       'MRI_Count'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<p>Columns can be addressed by a square bracket and apostrophe. We can use this to get information on the rows contained in the column. The following code will give a list of all genders, then will take a mean of all the female VIQs.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(brain_size[<span class="st">'Gender'</span>])</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>brain_size[brain_size[<span class="st">'Gender'</span>]<span class="op">==</span><span class="st">'Female'</span>][<span class="st">'VIQ'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0     Female
+1       Male
+2       Male
+3       Male
+4     Female
+5     Female
+6     Female
+7     Female
+8       Male
+9       Male
+10    Female
+11      Male
+12      Male
+13    Female
+14    Female
+15    Female
+16    Female
+17      Male
+18    Female
+19      Male
+20      Male
+21      Male
+22    Female
+23      Male
+24    Female
+25      Male
+26    Female
+27      Male
+28    Female
+29    Female
+30    Female
+31      Male
+32      Male
+33      Male
+34    Female
+35    Female
+36      Male
+37    Female
+38      Male
+39      Male
+Name: Gender, dtype: object</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>109.45</code></pre>
+</div>
+</div>
+<p>The groupby function can also be used to give more information across a the dataframe columns.</p>
+<p>This example groups brain size by gender and then gives means for each gender.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>groupby_gender <span class="op">=</span> brain_size.groupby(<span class="st">'Gender'</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> gender, value <span class="kw">in</span> groupby_gender[<span class="st">'VIQ'</span>]:</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>((gender, value.mean()))</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>groupby_gender.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>('Female', 109.45)
+('Male', 115.25)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>FSIQ</th>
+      <th>VIQ</th>
+      <th>PIQ</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>MRI_Count</th>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Female</th>
+      <td>19.65</td>
+      <td>111.9</td>
+      <td>109.45</td>
+      <td>110.45</td>
+      <td>137.200000</td>
+      <td>65.765000</td>
+      <td>862654.6</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>21.35</td>
+      <td>115.0</td>
+      <td>115.25</td>
+      <td>111.60</td>
+      <td>166.444444</td>
+      <td>71.431579</td>
+      <td>954855.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plotting-data" class="level1">
+<h1>Plotting Data</h1>
+<p>First you have to import the plot tools from pandas.</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas.plotting</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas.plotting <span class="im">import</span> scatter_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="scatter-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="scatter-matrices">Scatter Matrices</h2>
+<p>Scatter matrices can be constructed by specifying the dataset and columns. Make sure to end the command with plt.show(). Especially in R Studio.</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>scatter_matrix(brain_size[[<span class="st">'Weight'</span>, <span class="st">'Height'</span>, <span class="st">'MRI_Count'</span>]])</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Beginner%20Python_files/figure-html/cell-20-output-1.png" width="588" height="437"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="hypothesis-testing" class="level1">
+<h1>Hypothesis Testing</h1>
+<p>First, import the scipy.stats submodule of scipy.</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="students-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="students-t-test">Student’s t-test</h2>
+<section id="one-sample-t-test" class="level3">
+<h3 class="anchored" data-anchor-id="one-sample-t-test">One Sample t-test</h3>
+<p>For one-sample student’s t-test, python will return the p-value and t-stat. run the sample column with stats.ttest_1samp for 1 sample. Set the mean to 0 for a normal distribution.</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>stats.ttest_1samp(brain_size[<span class="st">'VIQ'</span>], <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>Ttest_1sampResult(statistic=30.08809997084933, pvalue=1.328919646872788e-28)</code></pre>
+</div>
+</div>
+</section>
+<section id="two-sample-t-test" class="level3">
+<h3 class="anchored" data-anchor-id="two-sample-t-test">Two Sample t-test</h3>
+<p>For two-sample student’s t-test, you can create two objects to compare means between (or you can use two columns. Use stats.ttest_ind to run the two-sample t-test.</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>female_viq <span class="op">=</span> brain_size[brain_size[<span class="st">'Gender'</span>]<span class="op">==</span><span class="st">'Female'</span>][<span class="st">'VIQ'</span>]</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>male_viq <span class="op">=</span> brain_size[brain_size[<span class="st">'Gender'</span>]<span class="op">==</span><span class="st">'Male'</span>][<span class="st">'VIQ'</span>]</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>stats.ttest_ind(female_viq, male_viq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>Ttest_indResult(statistic=-0.7726161723275012, pvalue=0.44452876778583217)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="paired-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="paired-t-test">Paired t-test</h2>
+<p>For paired tests, you can use the stats.ttest_rel function.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>stats.ttest_rel(brain_size[<span class="st">'FSIQ'</span>], brain_size[<span class="st">'PIQ'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>Ttest_relResult(statistic=1.7842019405859857, pvalue=0.08217263818364236)</code></pre>
+</div>
+</div>
+<p>It is also the same as a 1 sample test when yu take the difference between columns.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>stats.ttest_1samp(brain_size[<span class="st">'FSIQ'</span>] <span class="op">-</span> brain_size[<span class="st">'PIQ'</span>], <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>Ttest_1sampResult(statistic=1.7842019405859857, pvalue=0.08217263818364236)</code></pre>
+</div>
+</div>
+</section>
+<section id="non-normal-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="non-normal-distributions">Non-normal distributions</h2>
+<section id="wilcoxon-signed-rank-tests" class="level3">
+<h3 class="anchored" data-anchor-id="wilcoxon-signed-rank-tests">Wilcoxon signed-rank tests</h3>
+<p>Wilcoxon signed-rank tests for non-normal distributions of paired data can be ran using the stats.wilcoxon function.</p>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>stats.wilcoxon(brain_size[<span class="st">'FSIQ'</span>], brain_size[<span class="st">'PIQ'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\randi\AppData\Local\r-miniconda\envs\r-reticulate\lib\site-packages\scipy\stats\_morestats.py:3255: UserWarning: Exact p-value calculation does not work if there are zeros. Switching to normal approximation.
+  warnings.warn("Exact p-value calculation does not work if there are "</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>WilcoxonResult(statistic=274.5, pvalue=0.10659492713506856)</code></pre>
+</div>
+</div>
+</section>
+<section id="mann-whitney-u-tests" class="level3">
+<h3 class="anchored" data-anchor-id="mann-whitney-u-tests">Mann-Whitney U tests</h3>
+<p>Mann-Whitney U tests can be used for non-normal distributions of unpaired data using the scipy.stats.mannwhitneyu() function.</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>scipy.stats.mannwhitneyu(brain_size[<span class="st">'FSIQ'</span>], brain_size[<span class="st">'PIQ'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>MannwhitneyuResult(statistic=905.0, pvalue=0.3143162646412675)</code></pre>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="questions" class="level1">
 <h1>Questions</h1>
